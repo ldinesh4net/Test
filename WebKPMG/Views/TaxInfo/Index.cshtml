@@ -1,0 +1,72 @@
+﻿@model  IEnumerable<WebKPMG.Models.ErrorlistViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<header >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="body" style="color:black" align="center">
+                    @using (Html.BeginForm("", "TaxInfo", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+                    {
+
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="file" name="file_Uploader" style="color:black" />
+                                </td>
+                                <td>
+
+                                    <input type="submit" id="bttn_Upload" value="Upload" />
+                                </td>
+                            </tr>
+
+                        </table>
+    <div id="divLoading" style="margin: 0px; padding: 0px; position: fixed; right: 0px;
+    top: 0px; width: 100%; height: 100%; background-color: #666666; z-index: 30001;
+    opacity: .8; filter: alpha(opacity=70);display:none">
+        <p style="position: absolute; top: 30%; left: 45%; color: White;">
+            Loading, please wait...<img src="~/Content/images/load-icon-png-20.png">
+        </p>
+    </div>
+
+                        <br/>
+
+    <div style="color:red">
+        @ViewBag.Message
+                        </div>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Row No</th>
+                <th>Error List</th>
+
+
+            </tr>
+        </thead>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.row)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Error)
+                    </td>
+
+                </tr>
+            }
+        }
+    </table>
+
+                    }
+                          </div>
+                </div>
+            </div>
+        </div>
+    </header>
+

@@ -1,0 +1,49 @@
+﻿@model  WebKPMG.Models.TaxInfoViewModel
+
+
+
+    <form class="form-horizontal" role="form" id="EditForm" style="color:black; display:none;padding-top:50px" >
+        @Html.ValidationSummary(true)
+
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.TaxId, new { id = "TaxId" })
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Account, new { @class = "col-md-2 control-label text-right" })
+            <div id="field-height" class="col-md-4">
+                @Html.TextBoxFor(m => m.Account, new { @class = "form-control", id = "Account", required = "required", @maxlength = "50" })
+                @Html.ValidationMessageFor(model => model.Account, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label text-right" })
+            <div id="field-height" class="col-md-4">
+                @Html.TextAreaFor(m => m.Description, new { @class = "form-control", id = "Description", required = "required", @maxlength = "50" })
+                @Html.ValidationMessageFor(model => model.Description, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Currency, new { @class = "col-md-2 control-label text-right" })
+            <div id="field-height" class="col-md-4">
+            
+                    @Html.TextBoxFor(m => m.Currency, new { @class = "form-control", id = "Currency", required = "required", @maxlength = "50" })
+                    @Html.ValidationMessageFor(model => model.Currency, null, new { @class = "text-danger" })
+                
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Amount, new { @class = "col-md-2 control-label text-right" })
+            <div id="field-height" class="col-md-4">
+                @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", id = "Amount", required = "required", @maxlength = "50" })
+                @Html.ValidationMessageFor(model => model.Amount, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="center">
+            <button type="button" class="btn btn-default" id="btnSave">
+                Save
+            </button>
+            <button type="button" class="btn btn-danger" id="btnCancel">
+                Cancel
+            </button>
+        </div>
+    </form>
